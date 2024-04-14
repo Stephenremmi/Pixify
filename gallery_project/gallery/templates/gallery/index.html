@@ -1,0 +1,69 @@
+{%extends "gallery/base.html"%}
+
+{%block content%}
+<div class="owl-carousel owl-theme">
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1005/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1008/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1027/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1012/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1026/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1018/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1015/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1003/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1010/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1025/200/300">
+    </div>
+    <div class="item">
+        <img class="img-fluid image" src="https://picsum.photos/id/1011/200/300">
+    </div>
+</div>
+
+
+<section class="gallery-block compact-gallery">
+    <div class="container">
+        <div class="row no-gutters">
+            {%for photo in photos%}
+            <div class="col-md-6 col-lg-4 item zoom-on-hover">
+                <a class="lightbox" href="{{photo.photo_image.url}}" data-caption="{{photo.name}}: {{photo.description}}">
+                    <img class="img-fluid image" src="{{photo.photo_image.url}}">
+                    <span class="description">
+                        <span class="description-heading">{{photo.name}}</span>
+                        <span class="description-body">{{photo.description}}</span>
+                        <div style="display: flex;">
+                            <p class="description-body"><span class="badge">
+                                <i class="fas fa-map-marker-alt"></i> {{photo.location.city}}, {{photo.location.country}}
+                            </span></p>
+                            <span id="photo{{photo.id}}" hidden>{{photo.photo_image.url}}</span>
+                            <button onclick="copyToClipboard('photo{{photo.id}}')" class="btn no-border text-white"><i class="far fa-copy"></i></button>
+                        </div>
+                        <small style="font-size: 12px; float:right" class="ml-45"><i class="far fa-clock"></i> {{photo.post_date | timesince}} ago</small>  
+                    </span>
+                </a>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</section>
+{%endblock%}
